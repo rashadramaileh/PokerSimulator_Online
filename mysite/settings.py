@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-4mh@$e-f_z1^bn86qm=)#(^m_p8t)s%xkm!)^_utwkt6w5c#+q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['poker-simulator-dbf1857c4ce4.herokuapp.com']
 
 
 # Application definition
