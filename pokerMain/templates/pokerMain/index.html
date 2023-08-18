@@ -1,0 +1,60 @@
+{% extends 'pokerMain/base.html' %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  {% block title %} CHOWDER POKER {% endblock title %}
+</head>
+<style>
+    h1 { font-size: 20pt; }
+    h2 { font-size: 16pt; }
+</style>
+<body>
+{% block body %}
+        {% if user.is_authenticated %}
+            <div class="container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                <div style="margin-top: 8em;">
+                    <h1 class="text-center" style="color: white; font-family: Lucida Console;">WELCOME TO CHOWDER POKER!</h1>
+                </div>
+
+                 <div style="margin-top: 5em; margin-left: 10em; margin-right: 10em;">
+                    <h3 class="text-center" style="color: white; font-family: Lucida Console">CHOWDER POKER is a preflop hand simulator
+                        using GTO principles. Currently offering 100bb stack size opening ranges. MORE TO COME SOON!</h3>
+                 </div>
+
+                <div style="margin-top: 5em;">
+                    <h4 class="text-center" style="color: white; font-family: Lucida Console">Click the button below to get started</h4>
+                </div>
+                <div style="width: 100px; height: 100px; margin: auto; margin-top: 2em;">
+                    <a href="{% url 'pokerMain:play_game'%}"><button class="btn-primary" style="width: 100px; height: 50px;" type ="submit">Start</button></a>
+                </div>
+            </div>
+
+        {% else %}
+            <div class="container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                <div style="margin-top: 8em;">
+                    <h1 class="text-center" style="color: white; font-family: Lucida Console;">WELCOME TO CHOWDER POKER!</h1>
+                </div>
+
+                 <div style="margin-top: 5em; margin-left: 10em; margin-right: 10em;">
+                    <h3 class="text-center" style="color: white; font-family: Lucida Console">CHOWDER POKER is a preflop hand simulator
+                        using GTO principles. Currently offering 100bb stack size opening ranges. MORE TO COME SOON!</h3>
+                 </div>
+                <div style="margin-top: 5em;">
+                <h4 class="text-center" style="color: white; font-family: Lucida Console">Login to play</h4>
+                </div>
+                <div style="width: 100px; height: 100px; margin: auto; margin-top: 2em;">
+                    <a href="{% url 'login'%}"><button class="btn-primary" style="width: 100px; height: 50px;"
+                                                            type ="submit">Login</button></a>
+                </div>
+            </div>
+
+        {% endif %}
+
+    </div>
+{% endblock %}
+</body>
+</html>

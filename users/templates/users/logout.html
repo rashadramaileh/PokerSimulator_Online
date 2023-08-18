@@ -1,0 +1,34 @@
+{% extends 'pokerMain/base.html' %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block title %}Logout{% endblock title %}
+</head>
+<body>
+{% block body %}
+    <div class="container" style="padding-top: 5%">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                 <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        <div class="card-title">
+                            Logout
+                        </div>
+                    </div>
+                     <div class="card-body bg-light text-black" style="text-align: center">
+                          <h2>You have been logged out!</h2>
+                            <a href="{% url 'pokerMain:index' %}" class="btn btn-dark" role="button" style="color: white">HOME</a>
+                     </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+</body>
+</html>

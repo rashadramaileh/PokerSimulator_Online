@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Result</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <nav class="navbar navbar-dark">
+    <a href="{% url 'pokerMain:index' %}" class="navbar-brand">CHOWDER POKER</a>
+    <div class="navbar">
+        <a href="{% url 'pokerMain:index' %}" class="nav-item nav-link" style="color: white">HOME</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'pokerMain:play_game'%}" class="nav-item nav-link" style="color: white">PLAY</a>
+            <a href="{% url 'pokerMain:report_bug' %}" class="nav-item nav-link" style="color: white">REPORT BUG</a>
+            <a href="{% url 'logout' %}" class="nav-item nav-link" style="color: white">LOGOUT</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="nav-item nav-link" style="color: white">LOGIN</a>
+            <a href="{% url 'register' %}" class="nav-item nav-link" style="color: white">REGISTER</a>
+        {% endif %}
+    </div>
+</nav>
+</head>
+<style>
+     html, body {
+         background-color: black;
+         width: 100%;
+         height: 100%;
+         overflow: hidden;
+      }
+
+.image1 {
+    position: static;
+    top: 0;
+    left: 0;
+
+    max-width: 80%;
+    max-height: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+.image2 {
+    position: absolute;
+     left: 44%;
+    bottom:35%;
+    height: 18.5%;
+    width: 6.1%;
+
+
+}
+.image3 {
+    position: absolute;
+    left: 50%;
+    bottom: 35%;
+    height: 18.5%;
+    width: 6.10%;
+
+}
+.center{
+    width: 100%;
+    position: absolute;
+    display: block;
+}
+
+.button1{
+    flex-direction: row;
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    left: 6.5%;
+    top: 45%
+}
+.button2{
+    flex-direction: row;
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    left: 8.5%;
+    top: 50%;
+}
+.correct{
+    position: absolute;
+    left: 41%;
+    top: 35%;
+    height: 10%;
+    length: 10%
+}
+.incorrect{
+    position: absolute;
+    left: 41%;
+    top: 35%;
+    height: 10%;
+    length: 10%
+}
+
+</style>
+<body>
+{% block body %}
+<div class="center">
+    <div>
+        <img class="image1" src="{{ table }}" />
+            <div>
+                <img class="image2" src="{{ newcard1.image.url }}" />
+            </div>
+            <div>
+                <img class="image3" src="{{ newcard2.image.url }}" />
+            </div>
+            <div class="container">
+            <div class="button1">
+                <form method='get' action='#'>
+                    {% csrf_token %}
+                    <input class="btn btn-primary btn-lg"  style="width: 110%; height: 130%;
+                     font-weight: bold" type="submit" value="Next Hand" name="Next Hand"/>
+                </form>
+            </div>
+                {% if result == 'correct' %}
+                    <img class="correct" src="/images/images/correct.png" />
+                {% endif %}
+
+                {% if result == 'incorrect' %}
+                    <img class="incorrect" src="/images/images/incorrect.png" />
+                {% endif %}
+
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
+</body>
+</html>
